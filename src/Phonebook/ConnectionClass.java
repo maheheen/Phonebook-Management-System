@@ -1,0 +1,23 @@
+package Phonebook;
+
+import java.awt.*;
+import java.sql.*;
+public class ConnectionClass {
+    Connection con;
+    Statement stm;
+    public ConnectionClass(){
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/phonebook", "root", "c0nnectPassw0rd");
+            stm = con.createStatement();
+            System.out.println("Connection Established Successfully!");
+        }
+        catch(Exception ex){
+            ex.printStackTrace();
+        }
+    }
+
+    public static void main(String[] args) {
+        new ConnectionClass();
+    }
+}
