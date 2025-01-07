@@ -3,8 +3,8 @@ package Phonebook;
 import java.awt.*;
 import java.sql.*;
 public class ConnectionClass {
-    Connection con;
     Statement stm;
+    Connection con;
     public ConnectionClass(){
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
