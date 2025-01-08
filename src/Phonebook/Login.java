@@ -1,5 +1,7 @@
 package Phonebook;
 
+import com.mysql.cj.conf.ConnectionPropertiesTransform;
+
 import java.awt.*;
 import java.sql.*;
 import java.awt.event.*;
@@ -71,7 +73,32 @@ public class Login extends JFrame implements ActionListener {
         add(p1, "Center");
     }
     public void actionPerformed(ActionEvent e){
+        String username = textField.getText();
+        String password = passwordField.getText();
 
+        if(e.getSource() == bt1){
+            try {
+                ConnectionClass obj = new ConnectionClass();
+                String query = "SELECT * FROM login WHERE USERNAME = '" + username + "' and password = '" + password + "'" ;
+                ResultSet rest = obj.stm.executeQuery(query);
+
+                if(rest.next()){
+//                    new Home().setVisible(true);
+                    System.out.println("You have logged in");
+                    this.setVisible(false);
+                }
+                else{
+                    JOptionPane.showMessageDialog(null,"Your Password is incorrect");
+                    this.setVisible(false);
+                }
+            }
+            catch(Exception ex){
+                ex.printStackTrace();
+            }
+        }
+        if(e.getSource() == bt2){
+            this.setVisible(false);
+        }
     }
 
     public static void main(String[] args) {
