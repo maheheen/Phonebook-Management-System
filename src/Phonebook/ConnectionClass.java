@@ -10,7 +10,7 @@ public class ConnectionClass {
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/phonebook", "root", "c0nnectPassw0rd");
             stm = con.createStatement();
-            System.out.println("Connection Established Successfully!");
+//            System.out.println("Connection Established Successfully!");
         }
         catch(Exception ex){
             ex.printStackTrace();
