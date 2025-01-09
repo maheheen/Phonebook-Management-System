@@ -83,7 +83,7 @@ public class Login extends JFrame implements ActionListener {
                 ResultSet rest = obj.stm.executeQuery(query);
 
                 if(rest.next()){
-//                    new Home().setVisible(true);
+                    new Home().setVisible(true);
                     System.out.println("You have logged in");
                     this.setVisible(false);
                 }
