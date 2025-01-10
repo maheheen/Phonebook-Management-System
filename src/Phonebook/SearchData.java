@@ -62,7 +62,7 @@ public class SearchData extends JFrame implements ActionListener {
         if (e.getSource() == bt1) {
             try {
                 ConnectionClass obj = new ConnectionClass();
-                String query = "SELECT name FROM add_contact WHERE NAME = '" + name + " 's";
+                String query = "SELECT name FROM add_contact WHERE name = '" + name + " '";
                 ResultSet rest = obj.stm.executeQuery(query);
 
                 if(rest.next()) {
@@ -85,10 +85,9 @@ public class SearchData extends JFrame implements ActionListener {
             this.setVisible(false);
             new Home().setVisible(true);
         }
-
     }
 
     public static void main(String[] args) {
-        new Login().setVisible(true);
+        new SearchData().setVisible(true);
     }
 }
