@@ -73,26 +73,26 @@ public class Home extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e){
         if (e.getSource() == bt1) {
             this.setVisible(false);
-//            new EntryData().setVisible(true);
-            System.out.println("Entry");
+            new EntryData().setVisible(true);
+//            System.out.println("Entry");
         }
 
         if (e.getSource() == bt2) {
             this.setVisible(false);
-//            new SearchData().setVisible(true);
-            System.out.println("Search Contact");
+            new SearchData().setVisible(true);
+//            System.out.println("Search Contact");
         }
 
         if (e.getSource() == bt3) {
             this.setVisible(false);
-//            new SearchNameForEdit().setVisible(true);
-            System.out.println("Edit");
+            new SearchNameForEdit().setVisible(true);
+//            System.out.println("Edit");
         }
 
         if (e.getSource() == bt4) {
             this.setVisible(false);
-//            new DeleteContact().setVisible(true);
-            System.out.println("Delete");
+            new DeleteContact().setVisible(true);
+//            System.out.println("Delete");
         }
 
         if (e.getSource() == bt5) {
