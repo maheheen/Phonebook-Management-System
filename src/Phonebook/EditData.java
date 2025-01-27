@@ -111,7 +111,7 @@ public class EditData extends JFrame implements ActionListener {
         p2.add(bt2);
         try {
             ConnectionClass obj = new ConnectionClass();
-            String q = "select * from add_contact where Id = '" + idno + "'";
+            String q = "select * from add_contact where id = '" + idno + "'";
             ResultSet rest = obj.stm.executeQuery(q);
 
             while (rest.next()) {
