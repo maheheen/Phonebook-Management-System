@@ -42,7 +42,7 @@ public class Home extends JFrame implements ActionListener {
         bt5.addActionListener(this);
 
         // Placeholder for an image
-        ImageIcon img = new ImageIcon(ClassLoader.getSystemResource(""));
+        ImageIcon img = new ImageIcon(ClassLoader.getSystemResource("Images/phonebook.png"));
         Image img2 = img.getImage().getScaledInstance(150, 150, Image.SCALE_DEFAULT);
         ImageIcon img3 = new ImageIcon(img2);
         l2 = new JLabel(img3);

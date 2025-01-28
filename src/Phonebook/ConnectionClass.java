@@ -9,7 +9,7 @@ public class ConnectionClass {
             Class.forName("com.mysql.cj.jdbc.Driver");      // Loading MySQL JDBC driver for communication with database.
 
             // Establish the connection to the database
-            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/phonebook", "root", "c0nnectPassw0rd");
+            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/phonebook", "root", "0007");
             stm = con.createStatement();
         }
         catch(Exception ex){

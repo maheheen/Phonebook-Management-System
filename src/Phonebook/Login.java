@@ -57,7 +57,7 @@ public class Login extends JFrame implements ActionListener {
         bt2.setFont(f2);
 
         // Adding an image/icon to the UI
-        ImageIcon img = new ImageIcon(ClassLoader.getSystemResource(""));
+        ImageIcon img = new ImageIcon(ClassLoader.getSystemResource("Images/phonebook.png"));
         Image img2 = img.getImage().getScaledInstance(150, 150, Image.SCALE_DEFAULT);
         ImageIcon img3 = new ImageIcon(img2);
         l4 = new JLabel(img3);
