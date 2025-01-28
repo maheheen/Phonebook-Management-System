@@ -3,53 +3,63 @@ package Phonebook;
 import javax.swing.*;
 import java.awt.*;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 public class SearchDataTable extends JFrame {
-    String x[] = {"Id", "Name", "Nick Name", "Phone", "Mobile", "Email", "Address", "Company", "Position", "Group Name"};
-    String y[][] = new String[20][10];
-    int i=0, j=0;
+    String[] x = {"Id", "Name", "Nick Name", "Phone", "Mobile", "Email", "Address", "Company", "Position", "Group Name"};
+    ArrayList<String[]> data; // ArrayList to hold the data
     JTable t;
     Font f;
 
-    public SearchDataTable(){
-
+    public SearchDataTable() {
     }
+
     public SearchDataTable(String name) {
         super("Contact Information");
         setLocation(1, 1);
         setSize(800, 400);
 
-        f = new Font("Arial", Font.BOLD, 14);
+        f = new Font("Arial", Font.BOLD, 20);
+        data = new ArrayList<>(); // Initialize the ArrayList
+
         try {
             ConnectionClass obj = new ConnectionClass();
             String query = "SELECT * FROM add_contact WHERE name = '" + name + "'";
             ResultSet rest = obj.stm.executeQuery(query);
 
             while (rest.next()) {
-                y[i][j++] = rest.getString("id");
-                y[i][j++] = rest.getString("name");
-                y[i][j++] = rest.getString("nickname");
-                y[i][j++] = rest.getString("phone");
-                y[i][j++] = rest.getString("mobile");
-                y[i][j++] = rest.getString("email");
-                y[i][j++] = rest.getString("address");
-                y[i][j++] = rest.getString("company");
-                y[i][j++] = rest.getString("position");
-                y[i][j++] = rest.getString("group_name");
-                i++;
-                j = 0;
+                // Create a row for each record
+                String[] row = new String[10];
+                row[0] = rest.getString("id");
+                row[1] = rest.getString("name");
+                row[2] = rest.getString("nickname");
+                row[3] = rest.getString("phone");
+                row[4] = rest.getString("mobile");
+                row[5] = rest.getString("email");
+                row[6] = rest.getString("address");
+                row[7] = rest.getString("company");
+                row[8] = rest.getString("position");
+                row[9] = rest.getString("group_name");
+                data.add(row); // Add row to the ArrayList
             }
-            t = new JTable(y,x);
+
+            // Convert ArrayList to 2D array for JTable
+            String[][] y = new String[data.size()][10];
+            for (int i = 0; i < data.size(); i++) {
+                y[i] = data.get(i);
+            }
+
+            t = new JTable(y, x);
             t.setFont(f);
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
-        catch(Exception ex){
-                ex.printStackTrace();
-            }
+
         JScrollPane sp = new JScrollPane(t);
         add(sp);
-}
+    }
 
     public static void main(String[] args) {
-//        new SearchDataTable("Umme Hani").setVisible(true);
+        new SearchDataTable("ali").setVisible(true);
     }
 }
