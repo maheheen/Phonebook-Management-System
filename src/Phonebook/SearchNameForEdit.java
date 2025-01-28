@@ -94,8 +94,4 @@ public class SearchNameForEdit extends JFrame implements ActionListener {
             new Home().setVisible(true);
         }
     }
-
-    public static void main(String[] args) {
-        new SearchNameForEdit().setVisible(true);
-    }
 }

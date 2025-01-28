@@ -19,7 +19,7 @@ public class SearchDataTable extends JFrame {
         setLocation(1, 1); //Position of the window
         setSize(800, 400); //Size of the window
 
-        f = new Font("Arial", Font.BOLD, 20);
+        f = new Font("Arial", Font.BOLD, 14);
         data = new ArrayList<>(); // Initialize the ArrayList to store rows of data
 
         try {
@@ -64,8 +64,4 @@ public class SearchDataTable extends JFrame {
         add(sp);
     }
 
-
-    public static void main(String[] args) {
-        new SearchDataTable("ali").setVisible(true);
-    }
 }

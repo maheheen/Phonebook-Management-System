@@ -104,7 +104,4 @@ public class SearchDataTableForEdit extends JFrame implements ActionListener {
         }
     }
 
-    public static void main(String[] args) {
-        new SearchDataTableForEdit("John").setVisible(true);
-    }
 }
