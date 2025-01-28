@@ -50,6 +50,6 @@ public class SearchDataTable extends JFrame {
 }
 
     public static void main(String[] args) {
-        new SearchDataTable("ali").setVisible(true);
+        new SearchDataTable("Umme Hani").setVisible(true);
     }
 }

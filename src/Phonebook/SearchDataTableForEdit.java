@@ -59,6 +59,7 @@ public class SearchDataTableForEdit extends JFrame implements ActionListener {
         p1.setLayout(new GridLayout(1,3,10,10));
         p1.add(l1);
         p1.add(tf1);
+        p1.add(bt1);
         setLayout(new BorderLayout(10,10));
         add(p1, "South");
         add(sp, "Center");
@@ -75,6 +76,6 @@ public class SearchDataTableForEdit extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) {
-        new SearchDataTableForEdit().setVisible(true);
+        new SearchDataTableForEdit("ali").setVisible(true);
     }
 }
