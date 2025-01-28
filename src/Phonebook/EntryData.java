@@ -164,8 +164,4 @@ public class EntryData extends JFrame implements ActionListener {
             new Home().setVisible(true);
         }
     }
-
-    public static void main(String[] args) {
-        // new EntryData().setVisible(true);
-    }
 }

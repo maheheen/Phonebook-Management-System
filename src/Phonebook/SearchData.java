@@ -97,8 +97,4 @@ public class SearchData extends JFrame implements ActionListener {
             new Home().setVisible(true); // Open the Home window
         }
     }
-
-    public static void main(String[] args) {
-        new SearchData().setVisible(true);
-    }
 }

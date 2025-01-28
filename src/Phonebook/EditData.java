@@ -182,8 +182,4 @@ public class EditData extends JFrame implements ActionListener {
             new Home().setVisible(true);
         }
     }
-
-    public static void main(String[] args) {
-        new EditData(3).setVisible(true);
-    }
 }
