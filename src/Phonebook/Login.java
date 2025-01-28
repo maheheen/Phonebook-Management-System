@@ -96,9 +96,10 @@ public class Login extends JFrame implements ActionListener {
 
         if (e.getSource() == bt1) { // If login button is clicked
             try {
-                ConnectionClass obj = new ConnectionClass(); // Creating connection object
-                String query = "SELECT * FROM login WHERE USERNAME = '" + username + "' and password = '" + password + "'";
-                ResultSet rest = obj.stm.executeQuery(query); // Executing query
+                ConnectionClass obj = new ConnectionClass();
+                String hashedPassword = PasswordHasher.hashPassword(password); // Hash the entered password
+                String query = "SELECT * FROM login WHERE username = '" + username + "' AND password = '" + hashedPassword + "'";
+                ResultSet rest = obj.stm.executeQuery(query); //Executing query
 
                 if (rest.next()) { // If user credentials are valid
                     new Home().setVisible(true); // Open Home screen
