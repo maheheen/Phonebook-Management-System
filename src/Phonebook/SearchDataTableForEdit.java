@@ -76,6 +76,6 @@ public class SearchDataTableForEdit extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) {
-        new SearchDataTableForEdit("ali").setVisible(true);
+//        new SearchDataTableForEdit("ali").setVisible(true);
     }
 }

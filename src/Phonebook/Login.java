@@ -88,7 +88,7 @@ public class Login extends JFrame implements ActionListener {
                     this.setVisible(false);
                 }
                 else{
-                    JOptionPane.showMessageDialog(null,"Your Password is incorrect");
+                    JOptionPane.showMessageDialog(null,"Your credentials are incorrect");
                     this.setVisible(false);
                 }
             }

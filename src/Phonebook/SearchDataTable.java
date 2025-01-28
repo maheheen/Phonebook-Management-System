@@ -19,7 +19,7 @@ public class SearchDataTable extends JFrame {
         setLocation(1, 1);
         setSize(800, 400);
 
-        f = new Font("Arial", Font.BOLD, 20);
+        f = new Font("Arial", Font.BOLD, 14);
         try {
             ConnectionClass obj = new ConnectionClass();
             String query = "SELECT * FROM add_contact WHERE name = '" + name + "'";
@@ -50,6 +50,6 @@ public class SearchDataTable extends JFrame {
 }
 
     public static void main(String[] args) {
-        new SearchDataTable("Umme Hani").setVisible(true);
+//        new SearchDataTable("Umme Hani").setVisible(true);
     }
 }
