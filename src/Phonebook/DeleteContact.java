@@ -10,7 +10,7 @@ public class DeleteContact extends JFrame implements ActionListener {
     // Column names for the JTable
     String[] x = {"Id", "Name", "Nickname", "Phone", "Mobile", "Email", "Address", "Company", "Position", "Group Name"};
 
-    JButton bt;
+    JButton bt, bt2;
     ArrayList<String[]> data; // List to store contact data from the database
     JTable t;
     Font f;
@@ -75,12 +75,16 @@ public class DeleteContact extends JFrame implements ActionListener {
         bt.setForeground(Color.RED);
         bt.addActionListener(this);
 
+        bt2 = new JButton("Back");
+        bt2.addActionListener(this);
+
 
         p1 = new JPanel();
         p1.setLayout(new GridLayout(1, 3, 10, 10));
         p1.add(l1);
         p1.add(tf1);
         p1.add(bt);
+        p1.add(bt2);
 
         // Set the layout for the main frame
         setLayout(new BorderLayout(10, 10));
@@ -113,6 +117,9 @@ public class DeleteContact extends JFrame implements ActionListener {
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
+        } else if (e.getSource() == bt2) {
+            new Home().setVisible(true);
+            this.setVisible(false);
         }
     }
 
