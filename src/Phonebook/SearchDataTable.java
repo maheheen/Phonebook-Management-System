@@ -15,18 +15,22 @@ public class SearchDataTable extends JFrame {
     }
 
     public SearchDataTable(String name) {
-        super("Contact Information");
-        setLocation(1, 1);
-        setSize(800, 400);
+        super("Contact Information"); //Window title
+        setLocation(1, 1); //Position of the window
+        setSize(800, 400); //Size of the window
 
         f = new Font("Arial", Font.BOLD, 20);
-        data = new ArrayList<>(); // Initialize the ArrayList
+        data = new ArrayList<>(); // Initialize the ArrayList to store rows of data
 
         try {
+            // Database connection
             ConnectionClass obj = new ConnectionClass();
+
+            // SQL query to retrieve contact details by name
             String query = "SELECT * FROM add_contact WHERE name = '" + name + "'";
             ResultSet rest = obj.stm.executeQuery(query);
 
+            // Loop through the result set and populate the data ArrayList
             while (rest.next()) {
                 // Create a row for each record
                 String[] row = new String[10];
@@ -49,6 +53,7 @@ public class SearchDataTable extends JFrame {
                 y[i] = data.get(i);
             }
 
+            // Create JTable with the retrieved data
             t = new JTable(y, x);
             t.setFont(f);
         } catch (Exception ex) {
@@ -58,6 +63,7 @@ public class SearchDataTable extends JFrame {
         JScrollPane sp = new JScrollPane(t);
         add(sp);
     }
+
 
     public static void main(String[] args) {
         new SearchDataTable("ali").setVisible(true);

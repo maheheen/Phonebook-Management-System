@@ -9,19 +9,22 @@ import java.sql.ResultSet;
 public class EditData extends JFrame implements ActionListener {
     JLabel l1, l2, l3, l4, l5, l6, l7, l8, l9, l10, l11, l12, l13 ;
     JButton bt1, bt2;
-    JPanel p1, p2, p3;
+    JPanel p1, p2, p3;                              //Declaration of all the variables and SWING components used.
     Font f,f1;
     JTextField tf1, tf2, tf3, tf4, tf5, tf6, tf7, tf8, tf9, tf10;
     public EditData(){
 
     }
-    public EditData (int idno) {
-        super(("Edit Contact"));
-        setLocation(450, 50);
-        setSize(450, 650);
+    public EditData (int idno) {               // Constructor to initialize the UI
+        super(("Edit Contact"));               //Title of the window
+        setLocation(450, 50);            //Location of window appearance on screen
+        setSize(450, 650);        //Size of the particular screen
+
+        //Fonts for labels, buttons etc.
         f = new Font("Arial", Font.BOLD, 25);
         f1 = new Font("Arial", Font.BOLD, 15);
 
+        //Initializing labels
         l1 = new JLabel("Update Contact");
         l2 = new JLabel("Name: ");
         l3 = new JLabel("Nick Name: ");
@@ -34,6 +37,7 @@ public class EditData extends JFrame implements ActionListener {
         l10 = new JLabel("Group Name: ");
         l11 = new JLabel("Id: ");
 
+        //Initializing text fields
         tf1 = new JTextField();
         tf2 = new JTextField();
         tf3 = new JTextField();
@@ -45,10 +49,11 @@ public class EditData extends JFrame implements ActionListener {
         tf9 = new JTextField();
         tf10 = new JTextField();
 
+        //Initializing buttons
         bt1 = new JButton("Edit Contact");
         bt2 = new JButton("Back");
 
-        l1.setHorizontalAlignment(JLabel.CENTER);
+        l1.setHorizontalAlignment(JLabel.CENTER);       //Main heading should be in the center.
 
         bt1.addActionListener(this);
         bt2.addActionListener(this);
@@ -109,11 +114,13 @@ public class EditData extends JFrame implements ActionListener {
         p2.add(tf9);
         p2.add(bt1);
         p2.add(bt2);
-        try {
-            ConnectionClass obj = new ConnectionClass();
-            String q = "select * from add_contact where id = '" + idno + "'";
+
+        try {                   // Fetch and display contact details for the given ID
+            ConnectionClass obj = new ConnectionClass();        // Connect to the database
+            String q = "select * from add_contact where id = '" + idno + "'";       // Query to get contact details
             ResultSet rest = obj.stm.executeQuery(q);
 
+            //Populating the fields with data stored in database
             while (rest.next()) {
                 tf10.setText(rest.getString("Id"));
                 tf1.setText(rest.getString("name"));
@@ -136,8 +143,8 @@ public class EditData extends JFrame implements ActionListener {
         add(p2, "Center");
     }
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == bt1) {
-            int Cid = Integer.parseInt(tf10.getText());
+        if (e.getSource() == bt1) {         // If "Edit" button is clicked
+            int Cid = Integer.parseInt(tf10.getText());     // Get the contact ID
             String name = tf1.getText();
             String nickName = tf2.getText();
             String phone = tf3.getText();
@@ -149,25 +156,27 @@ public class EditData extends JFrame implements ActionListener {
             String group = tf9.getText();
 
             try{
-            ConnectionClass obj = new ConnectionClass();
-            String q1 = "update add_contact set name ='" + name +"', nickname = '" + nickName +
-                    "', phone ='" + phone + "', mobile ='" + mobile + "', email = '" + email+ "', address ='" + address + "', company = '" + company + "', position ='" + position + "', group_name = '" + group + "' where id = '" + Cid + "'";
-            int check = obj.stm.executeUpdate(q1);
-            if(check == 1){
-                JOptionPane.showMessageDialog(null, "Your data is successfully updated!");
-                this.setVisible(false);
-                new SearchDataTableForEdit(name).setVisible(true);
-            }
-            else{
-                JOptionPane.showMessageDialog(null, "Please, fill all your details carefully!");
+                ConnectionClass obj = new ConnectionClass();
+
+                // // Update query to modify contact details
+                String q1 = "update add_contact set name ='" + name +"', nickname = '" + nickName +
+                        "', phone ='" + phone + "', mobile ='" + mobile + "', email = '" + email+ "', address ='" + address + "', company = '" + company + "', position ='" + position + "', group_name = '" + group + "' where id = '" + Cid + "'";
+                int check = obj.stm.executeUpdate(q1);      // Execute the update query
+                if(check == 1){
+                    JOptionPane.showMessageDialog(null, "Your data is successfully updated!");
+                    this.setVisible(false);
+                    new SearchDataTableForEdit(name).setVisible(true);
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Please, fill all your details carefully!");
+
+                }
 
             }
-
+            catch(Exception ex){
+                ex.printStackTrace();
+            }
         }
-        catch(Exception ex){
-            ex.printStackTrace();
-        }
-    }
         if(e.getSource() == bt2){
             this.setVisible(false);
             new Home().setVisible(true);

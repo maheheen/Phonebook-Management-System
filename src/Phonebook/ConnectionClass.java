@@ -1,16 +1,16 @@
 package Phonebook;
 
-import java.awt.*;
 import java.sql.*;
 public class ConnectionClass {
-    Statement stm;
-    Connection con;
+    Statement stm;              //Object to handle and execute SQL Queries
+    Connection con;             //Object to set up a connection to the database
     public ConnectionClass(){
         try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/phonebook", "root", "c0nnectPassw0rd");
+            Class.forName("com.mysql.cj.jdbc.Driver");      // Loading MySQL JDBC driver for communication with database.
+
+            // Establish the connection to the database
+            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/phonebook", "root", "0007");
             stm = con.createStatement();
-//            System.out.println("Connection Established Successfully!");
         }
         catch(Exception ex){
             ex.printStackTrace();
