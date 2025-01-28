@@ -62,7 +62,7 @@ public class SearchData extends JFrame implements ActionListener {
         if (e.getSource() == bt1) {
             try {
                 ConnectionClass obj = new ConnectionClass();
-                String query = "SELECT name FROM add_contact WHERE name = '" + name + " '";
+                String query = "SELECT name FROM add_contact WHERE name = '" + name + "'";
                 ResultSet rest = obj.stm.executeQuery(query);
 
                 if(rest.next()) {

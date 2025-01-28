@@ -6,7 +6,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class SearchDataTableForEdit extends JFrame implements ActionListener {
-    String x[] = {"Id", "Name", "Nickname", "Phone", "Mobile", "Email", "Address", "Company", "Position", "Group Name"};
+    String x[] = {"id", "name", "nickname", "phone", "mobile", "email", "address", "company", "position", "group_name"};
     String y[][] = new String[20][10];
     int i = 0;
     int j = 0;
@@ -20,7 +20,6 @@ public class SearchDataTableForEdit extends JFrame implements ActionListener {
     SearchDataTableForEdit()  {
 
     }
-
     SearchDataTableForEdit(String name1) {
         super("Contact Information");
         setLocation(1,1);
@@ -29,7 +28,7 @@ public class SearchDataTableForEdit extends JFrame implements ActionListener {
         f = new Font("Arial",Font.BOLD,14);
         try {
             ConnectionClass obj = new ConnectionClass();
-            String q = "SELECT * FROM add_contact WHERE Name = '" + name1 + "'";
+            String q = "SELECT * FROM add_contact WHERE name = '" + name1 + "'";
             ResultSet rest = obj.stm.executeQuery(q);
             while (rest.next()) {
                 y[i][j++] = rest.getString("id");

@@ -96,7 +96,7 @@ public class Home extends JFrame implements ActionListener {
         }
 
         if (e.getSource() == bt5) {
-            this.setVisible(false);
+            System.exit(0);
         }
 
     }
