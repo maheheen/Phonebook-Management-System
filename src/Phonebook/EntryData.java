@@ -142,7 +142,10 @@ public class EntryData extends JFrame implements ActionListener {
                 ConnectionClass obj = new ConnectionClass();
 
                 // Insert query to save contact details in the database
-                String q = "insert into add_contact (name, nickname, phone, mobile, email, address, company, position, group_name) value('" + name + "', '" + nickName + "', '" + phone + "', '" + mobile + "', '" + email + "', '" + address + "', '" + company + "', '" + position + "', '" + group + "')";
+                String q = "insert into add_contact (name, nickname, phone, mobile, email, address, " +
+                        "company, position, group_name) value('" + name +
+                        "', '" + nickName + "', '" + phone + "', '" + mobile + "', '" + email + "', " +
+                        "'" + address + "', '" + company + "', '" + position + "', '" + group + "')";
 
                 int var = obj.stm.executeUpdate(q); // Execute the query
 

@@ -160,7 +160,8 @@ public class EditData extends JFrame implements ActionListener {
 
                 // // Update query to modify contact details
                 String q1 = "update add_contact set name ='" + name +"', nickname = '" + nickName +
-                        "', phone ='" + phone + "', mobile ='" + mobile + "', email = '" + email+ "', address ='" + address + "', company = '" + company + "', position ='" + position + "', group_name = '" + group + "' where id = '" + Cid + "'";
+                        "', phone ='" + phone + "', mobile ='" + mobile + "', email = '" + email+ "', address ='" + address + "', company = '" + company + "', position ='" +
+                        position + "', group_name = '" + group + "' where id = '" + Cid + "'";
                 int check = obj.stm.executeUpdate(q1);      // Execute the update query
                 if(check == 1){
                     JOptionPane.showMessageDialog(null, "Your data is successfully updated!");
