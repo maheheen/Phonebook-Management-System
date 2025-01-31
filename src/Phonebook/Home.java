@@ -94,17 +94,17 @@ public class Home extends JFrame implements ActionListener {
 
         if (e.getSource() == bt2) { // If "Search" button is clicked
             this.setVisible(false);
-            new SearchData().setVisible(true);
+            new SearchData(userID).setVisible(true);
         }
 
         if (e.getSource() == bt3) { // If "Edit" button is clicked
             this.setVisible(false);
-            new SearchNameForEdit().setVisible(true);
+            new SearchNameForEdit(userID).setVisible(true);
         }
 
         if (e.getSource() == bt4) { // If "Delete" button is clicked
             this.setVisible(false);
-            new DeleteContact().setVisible(true);
+            new DeleteContact(userID).setVisible(true);
         }
 
         if (e.getSource() == bt6) { // If "View All" button is clicked

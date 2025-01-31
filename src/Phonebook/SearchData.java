@@ -13,11 +13,14 @@ public class SearchData extends JFrame implements ActionListener {
     Font f, f1;
     JPanel p1, p2;
     int id = 0;
+    int userId;
 
-    public SearchData() {
+    public SearchData(int userId) {
         super("Search Contact"); //Title of the window
         setLocation(450, 50); //Position of the window on the screen
         setSize(470, 180); //Size of the window
+
+        this.userId = userId;
 
         // Initializing fonts
         f = new Font("Arial", Font.BOLD, 25);
@@ -74,7 +77,7 @@ public class SearchData extends JFrame implements ActionListener {
                 ConnectionClass obj = new ConnectionClass();
 
                 // SQL query to search for the contact by name
-                String query = "SELECT name FROM add_contact WHERE name = '" + name + "'";
+                String query = "SELECT name FROM add_contact WHERE name = '" + name + "' AND user_id = " + userId;
                 ResultSet rest = obj.stm.executeQuery(query);
 
                 if (rest.next()) { // If the contact exists in the database
@@ -94,7 +97,7 @@ public class SearchData extends JFrame implements ActionListener {
 
         if (e.getSource() == bt2) { // If "Back" button is clicked
             this.setVisible(false); // Close the current window
-            new Home().setVisible(true); // Open the Home window
+            new Home(userId).setVisible(true); // Open the Home window
         }
     }
 }

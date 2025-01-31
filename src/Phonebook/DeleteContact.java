@@ -17,14 +17,14 @@ public class DeleteContact extends JFrame implements ActionListener {
     JLabel l1;
     JTextField tf1;
     JPanel p1;
+    int userId;
 
-
-    DeleteContact() {
+    DeleteContact(int userId) {
         super("Contact Information"); //Title of the window
         setSize(800, 400); //Size of the window
         setLocation(1, 1); //Position of the window on the screen
 
-
+        this.userId = userId;
         f = new Font("MS UI Gothic", Font.BOLD, 15);
 
         // Initialize the data list to store contact details
@@ -33,7 +33,7 @@ public class DeleteContact extends JFrame implements ActionListener {
             // Establish connection to the database
             ConnectionClass obj = new ConnectionClass();
 
-            String q = "SELECT * FROM add_contact"; // Query to fetch all contact records
+            String q = "SELECT * FROM add_contact where user_id = " + userId; // Query to fetch all contact records
             ResultSet rest = obj.stm.executeQuery(q); // Execute the query
 
             // Iterate through the result set and add data to the ArrayList
@@ -101,24 +101,24 @@ public class DeleteContact extends JFrame implements ActionListener {
                 ConnectionClass obj1 = new ConnectionClass();
 
                 // Query to delete the contact with the given ID
-                String q0 = "DELETE FROM add_contact WHERE Id ='" + idNo + "'";
+                String q0 = "DELETE FROM add_contact WHERE Id ='" + idNo + "' AND user_id  = " + userId;
                 int res = obj1.stm.executeUpdate(q0); // Execute the deletion query
 
                 if (res == 1) { // If a contact was deleted
                     JOptionPane.showMessageDialog(null, "Contact successfully deleted");
                     this.setVisible(false);
-                    new DeleteContact().setVisible(true);
+                    new DeleteContact(userId).setVisible(true);
                 }
                 else { // If no contact was deleted
                     JOptionPane.showMessageDialog(null, "Error deleting contact");
                     this.setVisible(false);
-                    new DeleteContact().setVisible(true);
+                    new DeleteContact(userId).setVisible(true);
                 }
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
         } else if (e.getSource() == bt2) {
-            new Home().setVisible(true);
+            new Home(userId).setVisible(true);
             this.setVisible(false);
         }
     }

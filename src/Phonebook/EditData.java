@@ -180,7 +180,8 @@ public class EditData extends JFrame implements ActionListener {
         }
         if(e.getSource() == bt2){
             this.setVisible(false);
-            new Home().setVisible(true);
+//            new Home().setVisible(true);
+            System.out.println("Home");
         }
     }
 }

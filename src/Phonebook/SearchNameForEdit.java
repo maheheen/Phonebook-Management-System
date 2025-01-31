@@ -13,11 +13,14 @@ public class SearchNameForEdit extends JFrame implements ActionListener {
     Font f, f1;
     JPanel p1, p2;
     int id = 0;
+    int userId;
 
-    public SearchNameForEdit() {
+    public SearchNameForEdit(int userId) {
         super("Search Name to Edit"); //Title of the window
         setLocation(450, 50);       //Position of the window on screen
         setSize(470, 180);   //Size of the window
+
+        this.userId = userId;
 
         // Setting fonts for the components
         f = new Font("Arial", Font.BOLD, 25);
@@ -69,7 +72,7 @@ public class SearchNameForEdit extends JFrame implements ActionListener {
             try {
                 // Establish connection to the database
                 ConnectionClass obj = new ConnectionClass();
-                String query = "SELECT name FROM add_contact WHERE name = '" + name + "'";
+                String query = "SELECT name FROM add_contact WHERE name = '" + name + "'AND user_id = " + userId;
                 ResultSet rest = obj.stm.executeQuery(query);
 
                 // If contact is found, open the editing screen
@@ -91,7 +94,8 @@ public class SearchNameForEdit extends JFrame implements ActionListener {
         // If back button is clicked, return to the home screen
         if (e.getSource() == bt2) {
             this.setVisible(false);
-            new Home().setVisible(true);
+            new Home(userId).setVisible(true);
         }
+
     }
 }
