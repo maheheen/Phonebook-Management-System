@@ -12,11 +12,13 @@ public class Home extends JFrame implements ActionListener {
     JButton bt1, bt2, bt3, bt4, bt5, bt6; // Added bt6 for "View All"
     JPanel p1, p2, p3;
     Font f, f1;
+    int userID;
 
-    public Home() {
+    public Home(int userID) {
         super("Home Selection"); // Title of the window
         setLocation(450, 250); // Position of the window on the screen
         setSize(450, 450); // Increased size to accommodate extra button
+        this.userID = userID;
 
         // Initialize fonts for the text
         f = new Font("Arial", Font.BOLD, 20);
@@ -87,7 +89,7 @@ public class Home extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == bt1) { // If "Entry" button is clicked
             this.setVisible(false);
-            new EntryData().setVisible(true);
+            new EntryData(userID).setVisible(true);
         }
 
         if (e.getSource() == bt2) { // If "Search" button is clicked
@@ -107,7 +109,7 @@ public class Home extends JFrame implements ActionListener {
 
         if (e.getSource() == bt6) { // If "View All" button is clicked
             this.setVisible(false);
-            new ViewAllContacts().setVisible(true); // Open the "View All" window
+            new ViewAllContacts(userID).setVisible(true); // Open the "View All" window
         }
 
         if (e.getSource() == bt5) { // If "Exit" button is clicked

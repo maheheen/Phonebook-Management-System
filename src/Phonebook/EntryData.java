@@ -20,11 +20,13 @@ public class EntryData extends JFrame implements ActionListener {
 
     // Text fields for input data
     JTextField tf1, tf2, tf3, tf4, tf5, tf6, tf7, tf8, tf9;
+    int userID;
 
-    public EntryData() {
+    public EntryData(int userId) {
         super("Add Contact"); // Title of the window
         setLocation(450, 50); // Position of the window on the screen
         setSize(450, 650); // Size of the window
+        this.userID = userId;
 
         // Initialize fonts for heading and GUI components
         f = new Font("Arial", Font.BOLD, 25);
@@ -143,16 +145,16 @@ public class EntryData extends JFrame implements ActionListener {
 
                 // Insert query to save contact details in the database
                 String q = "insert into add_contact (name, nickname, phone, mobile, email, address, " +
-                        "company, position, group_name) value('" + name +
+                        "company, position, group_name, user_id) value('" + name +
                         "', '" + nickName + "', '" + phone + "', '" + mobile + "', '" + email + "', " +
-                        "'" + address + "', '" + company + "', '" + position + "', '" + group + "')";
+                        "'" + address + "', '" + company + "', '" + position + "', '" + group + "', '" + userID + "')";
 
                 int var = obj.stm.executeUpdate(q); // Execute the query
 
                 if (var == 1) { // If the insertion is successful
                     JOptionPane.showMessageDialog(null, "Your data is inserted.");
                     this.setVisible(false);
-                    new Home().setVisible(true);
+                    new Home(userID).setVisible(true);
                 } else { // If insertion fails
                     JOptionPane.showMessageDialog(null, "Please fill the details carefully");
                 }
@@ -164,7 +166,7 @@ public class EntryData extends JFrame implements ActionListener {
         // If "Back" button is clicked
         if (e.getSource() == bt2) {
             this.setVisible(false);
-            new Home().setVisible(true);
+            new Home(userID).setVisible(true);
         }
     }
 }

@@ -11,7 +11,7 @@ public class ViewAllContacts extends JFrame {
     JTable t;
     Font f;
 
-    public ViewAllContacts() {
+    public ViewAllContacts(int userId) {
         super("Contact Information"); //Window title
         setLocation(1, 1); //Position of the window
         setSize(800, 400); //Size of the window
@@ -24,7 +24,7 @@ public class ViewAllContacts extends JFrame {
             ConnectionClass obj = new ConnectionClass();
 
             // SQL query to retrieve contact details by name
-            String query = "SELECT * FROM add_contact";
+            String query = "SELECT * FROM add_contact WHERE user_id = " + userId;
             ResultSet rest = obj.stm.executeQuery(query);
 
             // Loop through the result set and populate the data ArrayList
